@@ -1,5 +1,17 @@
 defaultNamespace: default
-
-kustomize:
-  # To use a kustomization.yaml different from the one in the root folder
-  dir: ""
+targets:
+  - name: vm-overlays
+    clusterSelector:
+      matchLabels:
+        environment: mgmt-cluster-network
+    paths:
+      - overlays/vm-0
+      - overlays/vm-1
+      - overlays/vm-2
+      - overlays/vm-3
+      - overlays/vm-4
+      - overlays/vm-5
+      - overlays/vm-6
+      - overlays/vm-7
+      - overlays/vm-8
+      - overlays/vm-9
