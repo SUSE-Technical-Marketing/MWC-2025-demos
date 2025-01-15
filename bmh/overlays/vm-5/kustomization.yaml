@@ -1,7 +1,6 @@
 nameSuffix: "-5"
 resources:
   - ../../base  # Point to the base folder
-
 patches:
-- patch.yaml
+  - patch.yaml
 
