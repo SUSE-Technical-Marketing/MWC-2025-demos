@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: REPLACE_WITH_VM_NAME
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: YWRtaW4=
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: REPLACE_WITH_VM_NAME
+  labels:
+    cluster-role: control-plane
+spec:
+  online: true
+  bootMACAddress: REPLACE_WITH_MAC
+  bmc:
+    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/REPLACE_WITH_VM_UUID
+    disableCertificateVerification: true
+    credentialsName: REPLACE_WITH_VM_NAME
