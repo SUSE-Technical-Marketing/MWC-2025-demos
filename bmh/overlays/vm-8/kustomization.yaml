@@ -1,5 +1,0 @@
-resources:
-  - ../../base  # Point to the base folder
-
-patchesStrategicMerge:
-  - patch.yaml

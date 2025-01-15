@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: replace-with-vm-name-credentials
+  name: downstream-node-
 type: Opaque
 data:
   username: YWRtaW4=
@@ -10,13 +10,13 @@ data:
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: replace-with-vm-name
+  name: downstream-node-
   labels:
     cluster-role: control-plane
 spec:
   online: true
-  bootMACAddress: 00:00:00:00:00:00
+  bootMACAddress: REPLACE
   bmc:
-    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/replace-with-vm-uuid
+    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/REPLACE
     disableCertificateVerification: true
-    credentialsName: replace-with-vm-name-credentials
+    credentialsName: REPLACE
