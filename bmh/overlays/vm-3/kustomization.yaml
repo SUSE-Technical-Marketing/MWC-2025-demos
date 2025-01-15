@@ -1,4 +1,4 @@
-nameSuffix: -"3"
+nameSuffix: "-3"
 resources:
   - ../../base  # Point to the base folder
 
