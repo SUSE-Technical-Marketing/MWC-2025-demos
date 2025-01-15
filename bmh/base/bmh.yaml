@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: downstream-node-
+  name: downstream-node
 type: Opaque
 data:
   username: YWRtaW4=
@@ -10,7 +10,7 @@ data:
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream-node-
+  name: downstream-node
   labels:
     cluster-role: control-plane
 spec:
