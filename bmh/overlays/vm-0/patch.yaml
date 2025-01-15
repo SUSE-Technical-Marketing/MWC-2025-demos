@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: downstream-node-0
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: downstream-node-0
+spec:
+  bootMACAddress: aa:aa:aa:bb:00:00
+  bmc:
+    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/123e4567-e89b-12d3-a456-000000000000
+    disableCertificateVerification: true
+    credentialsName: downstream-node-0
