@@ -1,6 +1,7 @@
 nameSuffix: "-7"
 resources:
   - ../../base  # Point to the base folder
-patches:
-  - patch.yaml
+patchesStrategicMerge:
+  - secret-patch.yaml
+  - bmh-patch.yaml
 
