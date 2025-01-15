@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: downstream-node-
+  name: downstream-node
 ---
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream-node-
+  name: downstream-node
 spec:
   bootMACAddress: aa:aa:aa:bb:00:05
   bmc:
