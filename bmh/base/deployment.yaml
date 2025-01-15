@@ -15,7 +15,7 @@ metadata:
     cluster-role: control-plane
 spec:
   online: true
-  bootMACAddress: 00:00:00:00:00:00
+  bootMACAddress: replace-with-mac-address
   bmc:
     address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/replace-with-vm-uuid
     disableCertificateVerification: true
