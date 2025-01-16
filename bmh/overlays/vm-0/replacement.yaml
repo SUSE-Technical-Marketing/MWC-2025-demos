@@ -1,0 +1,35 @@
+apiVersion: builtin
+kind: ReplacementTransformer
+metadata:
+  name: replace-bmh-fields
+replacements:
+  - source:
+      kind: BareMetalHost
+      name: downstream-node
+      fieldPath: spec.bootMACAddress
+    targets:
+      - select:
+          kind: BareMetalHost
+          name: downstream-node
+        fieldPaths:
+          - spec.bootMACAddress
+  - source:
+      kind: BareMetalHost
+      name: downstream-node
+      fieldPath: spec.bmc.address
+    targets:
+      - select:
+          kind: BareMetalHost
+          name: downstream-node
+        fieldPaths:
+          - spec.bmc.address
+  - source:
+      kind: BareMetalHost
+      name: downstream-node
+      fieldPath: spec.bmc.credentialsName
+    targets:
+      - select:
+          kind: BareMetalHost
+          name: downstream-node
+        fieldPaths:
+          - spec.bmc.credentialsName

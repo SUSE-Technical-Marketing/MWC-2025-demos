@@ -1,7 +1,0 @@
-nameSuffix: "-3"
-resources:
-  - ../../base  # Point to the base folder
-patchesStrategicMerge:
-  - secret-patch.yaml
-  - bmh-patch.yaml
-
