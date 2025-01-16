@@ -2,9 +2,8 @@
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream-node
+  name: downstream
   namespace: default
-  resourceVersion: "1"
   labels:
     cluster-role: control-plane
 spec:
@@ -13,4 +12,3 @@ spec:
   bmc:
     address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/REPLACE
     disableCertificateVerification: true
-    credentialsName: REPLACE
