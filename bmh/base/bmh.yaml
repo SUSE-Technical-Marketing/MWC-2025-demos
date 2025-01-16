@@ -5,5 +5,5 @@ metadata:
   namespace: default
 type: Opaque
 data:
-  username: REPLACE
+  username: YWRtaW4=
   password: YWRtaW4=
