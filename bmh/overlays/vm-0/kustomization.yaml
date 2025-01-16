@@ -1,9 +1,6 @@
-nameSuffix: "-0"
+
 resources:
   - ../../base
-
-transformers:
-  - replacement.yaml
 
 patchesStrategicMerge:
   - bmh-patch.yaml
