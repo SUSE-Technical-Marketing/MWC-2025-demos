@@ -6,6 +6,8 @@ targets:
         environment: mgmt-cluster-network
     paths:
       - bmh/overlays/vm-0
+    policy:
+      recreate: true
 #      - bmh/overlays/vm-1
 #      - bmh/overlays/vm-2
 #      - bmh/overlays/vm-3
