@@ -4,6 +4,7 @@ kind: BareMetalHost
 metadata:
   name: downstream-node
   namespace: default
+  resourceVersion: "1"
   labels:
     cluster-role: control-plane
 spec:
