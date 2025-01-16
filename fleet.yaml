@@ -5,13 +5,13 @@ targets:
       matchLabels:
         environment: mgmt-cluster-network
     paths:
-      - bmh/overlays/vm-0
-#      - bmh/overlays/vm-1
-#      - bmh/overlays/vm-2
-#      - bmh/overlays/vm-3
-#      - bmh/overlays/vm-4
-#      - bmh/overlays/vm-5
-#      - bmh/overlays/vm-6
-#      - bmh/overlays/vm-7
-#      - bmh/overlays/vm-8
-#      - bmh/overlays/vm-9
+      - bmh/bmh-0
+      - bmh/bmh-1
+      - bmh/bmh-2
+      - bmh/bmh-3
+      - bmh/bmh-4
+      - bmh/bmh-5
+      - bmh/bmh-6
+      - bmh/bmh-7
+      - bmh/bmh-8
+      - bmh/bmh-9

@@ -1,6 +1,0 @@
-nameSuffix: "-0"
-resources:
-  - ../../base
-
-patchesStrategicMerge:
-  - secret-patch.yaml
