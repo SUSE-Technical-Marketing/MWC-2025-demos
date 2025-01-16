@@ -1,7 +1,7 @@
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream
+  name: downstreams
   namespace: default
 spec:
   bootMACAddress: aa:aa:aa:bb:00:00

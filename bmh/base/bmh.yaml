@@ -1,8 +1,17 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: downstreams
+  namespace: default
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: YWRtaW4=
 ---
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream
+  name: downstreams
   namespace: default
   labels:
     cluster-role: control-plane

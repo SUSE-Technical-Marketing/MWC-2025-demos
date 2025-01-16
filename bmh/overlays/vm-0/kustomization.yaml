@@ -4,3 +4,4 @@ resources:
 
 patchesStrategicMerge:
   - bmh-patch.yaml
+  - secret-patch.yaml
