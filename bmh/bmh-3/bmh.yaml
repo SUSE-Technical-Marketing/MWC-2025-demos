@@ -15,6 +15,7 @@ metadata:
   namespace: default
   labels:
     cluster-role: control-plane
+    node: downstream-node-3
 spec:
   online: true
   bootMACAddress: "aa:aa:aa:bb:01:03"
