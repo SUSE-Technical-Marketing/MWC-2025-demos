@@ -71,7 +71,7 @@ spec:
     kubelet:
       extraArgs:
         - provider-id=metal3://BAREMETALHOST_UUID
-    version: v1.31.3+rke2r1
+    version: v1.31.1+rke2r1
     nodeName: "localhost.localdomain"
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
