@@ -93,7 +93,7 @@ spec:
       hostSelector:
         matchLabels:
           cluster-role: control-plane
-          node: 4
+          node: group-4
       image:
         checksum: http://192.168.122.1:8080/eibimage-downstream-cluster.raw.sha256
         checksumType: sha256
