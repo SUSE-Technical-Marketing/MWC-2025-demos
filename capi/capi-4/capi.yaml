@@ -87,7 +87,7 @@ spec:
   nodeReuse: True
   template:
     spec:
-      automatedCleaningMode: metadata
+      automatedCleaningMode: disabled
       dataTemplate:
         name: downstream-node-4-controlplane-template
       hostSelector:
