@@ -84,10 +84,8 @@ metadata:
   name: capi-4-controlplane
   namespace: default
 spec:
-  nodeReuse: True
   template:
     spec:
-      automatedCleaningMode: metadata
       dataTemplate:
         name: capi-4-controlplane-template
       hostSelector:
