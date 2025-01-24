@@ -43,7 +43,7 @@ spec:
     kind: Metal3MachineTemplate
     name: capi-4-controlplane
   replicas: 3
-  version: v1.31.3+rke2r1
+  version: v1.31.4+rke2r1
   rolloutStrategy:
     type: "RollingUpdate"
     rollingUpdate:
@@ -173,8 +173,10 @@ metadata:
   name: capi-4-controlplane
   namespace: default
 spec:
+  nodeReuse: True
   template:
     spec:
+      automatedCleaningMode: metadata
       dataTemplate:
         name: capi-4-controlplane-template
       hostSelector:
