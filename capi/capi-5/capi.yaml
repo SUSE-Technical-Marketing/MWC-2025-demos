@@ -43,7 +43,7 @@ spec:
     kind: Metal3MachineTemplate
     name: capi-5-controlplane
   replicas: 1
-  version: v1.31.3+rke2r1
+  version: v1.31.4+rke2r1
   rolloutStrategy:
     type: "RollingUpdate"
     rollingUpdate:
