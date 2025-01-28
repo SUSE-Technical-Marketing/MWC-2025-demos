@@ -41,7 +41,7 @@ spec:
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: Metal3MachineTemplate
-    name: capi-3-controlplane
+    name: cluster-capi-3
   replicas: 1
   version: v1.31.3+rke2r1
   rolloutStrategy:
@@ -170,7 +170,7 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3MachineTemplate
 metadata:
-  name: capi-3-controlplane
+  name: cluster-capi-3
   namespace: default
 spec:
   nodeReuse: True
@@ -178,7 +178,7 @@ spec:
     spec:
       automatedCleaningMode: metadata
       dataTemplate:
-        name: capi-3-controlplane-template
+        name: cluster-capi-3
       hostSelector:
         matchLabels:
           cluster-role: control-plane
@@ -192,7 +192,7 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3DataTemplate
 metadata:
-  name: capi-3-controlplane-template
+  name: cluster-capi-3
   namespace: default
 spec:
   clusterName: cluster-capi-3
