@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: production-node-13-bmc-secret
+  labels:
+      environment.metal3.io: baremetal
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: cGFzc3dvcmQ=
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: production-node-13
+spec:
+  online: true
+  bmc:
+    address: redfish+http://192.168.122.2:8001/redfish/v1/Systems/0df0c3d9-588b-484b-ab88-dea51994e3a2
+    credentialsName: production-node-13-bmc-secret
+  bootMACAddress: 13:45:aa:c3:67:57
+  bootMode: legacy
