@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: downstream-node-4-1
-  namespace: default
+  name: preproduction-node-4-1
+  namespace: preproduccion
 type: Opaque
 data:
   username: YWRtaW4=
@@ -11,10 +11,11 @@ data:
 apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
-  name: downstream-node-4-1
-  namespace: default
+  name: preproduction-node-4-1
+  namespace: preproduccion
   labels:
     cluster-role: control-plane
+    environment: preproduction
     node: group-4
 spec:
   online: true
@@ -22,4 +23,4 @@ spec:
   bmc:
     address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/123e4567-e89b-12d3-b111-000000000004
     disableCertificateVerification: true
-    credentialsName: downstream-node-4-1
+    credentialsName: preproduction-node-4-1

@@ -2,8 +2,8 @@
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: Cluster
 metadata:
-  name: cluster-capi-3
-  namespace: default
+  name: cluster-preproduction-cluster-8
+  namespace: preproduccion
 spec:
   clusterNetwork:
     pods:
@@ -15,33 +15,33 @@ spec:
   controlPlaneRef:
     apiVersion: controlplane.cluster.x-k8s.io/v1beta1
     kind: RKE2ControlPlane
-    name: cluster-capi-3
+    name: cluster-preproduction-cluster-8
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: Metal3Cluster
-    name: cluster-capi-3
+    name: cluster-preproduction-cluster-8
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3Cluster
 metadata:
-  name: cluster-capi-3
-  namespace: default
+  name: cluster-preproduction-cluster-8
+  namespace: preproduccion
 spec:
   controlPlaneEndpoint:
-    host: 192.168.122.83
+    host: 192.168.122.208
     port: 6443
   noCloudProvider: true
 ---
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: RKE2ControlPlane
 metadata:
-  name: cluster-capi-3
-  namespace: default
+  name: cluster-preproduction-cluster-8
+  namespace: preproduccion
 spec:
   infrastructureRef:
     apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
     kind: Metal3MachineTemplate
-    name: cluster-capi-3
+    name: cluster-preproduction-cluster-8
   replicas: 1
   version: v1.31.3+rke2r1
   rolloutStrategy:
@@ -49,13 +49,13 @@ spec:
     rollingUpdate:
       maxSurge: 1
   registrationMethod: "control-plane-endpoint"
-  registrationAddress: 192.168.122.83
+  registrationAddress: 192.168.122.208
   serverConfig:
     cni: cilium
     cniMultusEnable: true
     tlsSan:
-      - 192.168.122.83
-      - https://192.168.122.83.sslip.io
+      - 192.168.122.208
+      - https://192.168.122.208.sslip.io
   agentConfig:
     format: ignition
     additionalUserData:
@@ -104,7 +104,7 @@ spec:
                     namespace: metallb-system
                   spec:
                     addresses:
-                      - 192.168.122.83/32
+                      - 192.168.122.208/32
                     serviceAllocation:
                       priority: 100
                       namespaces:
@@ -129,7 +129,7 @@ spec:
                   kind: Service
                   metadata:
                     name: kubernetes-vip
-                    namespace: default
+                    namespace: preproduccion
                     labels:
                       serviceType: kubernetes-vip
                   spec:
@@ -170,19 +170,19 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3MachineTemplate
 metadata:
-  name: cluster-capi-3
-  namespace: default
+  name: cluster-preproduction-cluster-8
+  namespace: preproduccion
 spec:
   nodeReuse: True
   template:
     spec:
       automatedCleaningMode: metadata
       dataTemplate:
-        name: cluster-capi-3
+        name: cluster-preproduction-cluster-8
       hostSelector:
         matchLabels:
           cluster-role: control-plane
-          node: group-3
+          node: group-8
       image:
         checksum: http://192.168.122.1:8080/eibimage-downstream-cluster.raw.sha256
         checksumType: sha256
@@ -192,10 +192,10 @@ spec:
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3DataTemplate
 metadata:
-  name: cluster-capi-3
-  namespace: default
+  name: cluster-preproduction-cluster-8
+  namespace: preproduccion
 spec:
-  clusterName: cluster-capi-3
+  clusterName: cluster-preproduction-cluster-8
   metaData:
     objectNames:
       - key: name
