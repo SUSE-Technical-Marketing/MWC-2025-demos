@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: preproduction-node-7-2
-  namespace: preproduccion
+  namespace: preproduction
 type: Opaque
 data:
   username: YWRtaW4=
@@ -12,7 +12,7 @@ apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
   name: preproduction-node-7-2
-  namespace: preproduccion
+  namespace: preproduction
   labels:
     cluster-role: control-plane
     environment: preproduction
