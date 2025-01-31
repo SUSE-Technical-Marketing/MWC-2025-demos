@@ -30,7 +30,7 @@ metadata:
   namespace: default
 spec:
   controlPlaneEndpoint:
-    host: 10.42.0.21
+    host: 10.42.0.171
     port: 20003
   noCloudProvider: true
 ---

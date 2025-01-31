@@ -17,7 +17,7 @@ metadata:
 spec:
   online: true
   bmc:
-    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/05e5fd00-9bdf-4b55-a55e-0c19ee4e859d
+    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/b0baa8fa-d84b-499a-b90d-f1017a5a6797
     credentialsName: production-node-8-bmc-secret
-  bootMACAddress: 5f:18:02:b2:0c:0b
+  bootMACAddress: cf:e4:15:51:87:25
   bootMode: legacy
