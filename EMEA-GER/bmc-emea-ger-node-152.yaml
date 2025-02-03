@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: emea-ger-node-152-bmc-secret
+  namespace: emea-ger
   labels:
       environment.metal3.io: baremetal
 type: Opaque
@@ -14,13 +15,14 @@ apiVersion: metal3.io/v1alpha1
 kind: BareMetalHost
 metadata:
   name: emea-ger-node-152
+  namespace: emea-ger
   labels:
     cluster-role: control-plane
     deploy-region: emea-ger
 spec:
   online: true
   bmc:
-    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/50c807f8-b48e-4188-8350-45d3c2eced6b
+    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/fdd0645a-f5eb-4602-93a0-30213b35309d
     credentialsName: emea-ger-node-152-bmc-secret
-  bootMACAddress: 92:33:d1:ea:f2:f0
+  bootMACAddress: 66:fc:16:6e:a8:18
   bootMode: legacy

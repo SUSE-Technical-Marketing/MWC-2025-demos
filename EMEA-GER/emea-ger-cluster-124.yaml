@@ -30,7 +30,7 @@ metadata:
   namespace: emea-ger
 spec:
   controlPlaneEndpoint:
-    host: 10.42.0.225
+    host: 10.42.0.163
     port: 20123
   noCloudProvider: true
 ---
