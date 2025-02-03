@@ -20,7 +20,7 @@ metadata:
 spec:
   online: true
   bmc:
-    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/f3b6af82-215a-4028-a279-549508795b60
+    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/5e9d9141-69af-4e47-8137-95d67c2722bb
     credentialsName: emea-ger-node-8-bmc-secret
-  bootMACAddress: f3:a0:60:85:cc:b1
+  bootMACAddress: 0e:9b:49:fb:8f:e8
   bootMode: legacy
