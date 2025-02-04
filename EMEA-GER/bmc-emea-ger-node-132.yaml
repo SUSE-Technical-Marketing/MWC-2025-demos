@@ -16,13 +16,15 @@ kind: BareMetalHost
 metadata:
   name: emea-ger-node-132
   namespace: emea-ger
+  annotations:
+    inspect.metal3.io: disabled
   labels:
     cluster-role: control-plane
     deploy-region: emea-ger
 spec:
   online: true
   bmc:
-    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/588333a6-cad6-473e-979d-13a8cae6f83e
+    address: redfish+http://192.168.122.2:8002/redfish/v1/Systems/0ac0085e-6b60-4d53-85b3-ec1fa1eb0095
     credentialsName: emea-ger-node-132-bmc-secret
-  bootMACAddress: 16:b9:de:13:22:6d
+  bootMACAddress: 92:cd:65:30:17:c1
   bootMode: legacy
