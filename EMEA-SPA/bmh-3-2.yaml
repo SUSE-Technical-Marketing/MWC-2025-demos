@@ -13,10 +13,11 @@ kind: BareMetalHost
 metadata:
   name: emea-spa-node-3-2
   namespace: emea-spa
+  annotations:
+    inspect.metal3.io: disabled
   labels:
     cluster-role: control-plane
     deploy-region: emea-spa
-    node: group-3
 spec:
   online: true
   bootMACAddress: "aa:aa:aa:cc:01:03"
