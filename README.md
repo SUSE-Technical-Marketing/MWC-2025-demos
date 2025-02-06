@@ -41,8 +41,8 @@ This demo covers the following key steps:
         * **Second Commit (ClusterClass Manifests):** We'll then commit the manifests for instantiating the Cluster Classes. Fleet will detect the changes and trigger CAPI to initiate the deployment process, installing SL Micro and Kubernetes, demonstrating GitOps in action.
 
 8. **Day Two Operations:**
-    * **Part 1: Application Upgrade:** We'll upgrade an application within AZ1 using the Cluster Class, showcasing streamlined application lifecycle management.
-    * **Part 2: Kubernetes Upgrade:** We'll modify manifests for the instances in AZ2 to trigger a Kubernetes upgrade across all clusters within the AZ using CAPI and the management-as-code principles.
+    * **Part 1: OS Upgrade:** We'll upgrade the OS version just using cluster class within AZ1 (oneshot to be upgraded in all instances), showcasing streamlined lifecycle management.
+    * **Part 2: Kubernetes Upgrade:** We'll modify manifests for the instances in AZ2 to trigger a Kubernetes upgrade across the clusters within the AZ using CAPI and the management-as-code principles.
 
 ## Learn More
 
