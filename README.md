@@ -24,13 +24,16 @@ This demo covers the following key steps:
 
 3. **Git Repository Overview:** We'll review the Git repository structure, branches, and components used for deployment, emphasizing the management-as-code approach.
 
-4. **EMEA-GER Region Deployment (Fleet):** We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
+4. **EMEA-GER Region Deployment (CAPI and Fleet):** 
+    * We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
+    * The manifests for these clusters will reside in the `emea-ger` branch of the demo repository.
+    * Initially, the branch will be empty. We will commit the BMH and CAPI files to start the enrollment and provisioning of the 200 emulated clusters.
 
 5. **EMEA-GER Region Deployment Monitoring:** We'll monitor the deployment progress of the 200 emulated servers.
 
 6. **Benefits of Cluster Classes:** We'll discuss the advantages of using Cluster Class manifests over standard manifests for simplified and consistent deployments.
 
-7. **EMEA-SPA Region Deployment (CAPI & GitOps):**
+7. **EMEA-SPA Region Deployment (CAPI, Cluster Class and Fleet):**
     * We'll create two distinct Cluster Classes for the two AZs in the EMEA-SPA region.
     * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository.  We'll use different labels for the cluster instances depending on their AZ, allowing Fleet to target deployments effectively.
     * Initially, the branch will be empty.  
@@ -38,8 +41,8 @@ This demo covers the following key steps:
         * **Second Commit (ClusterClass Manifests):** We'll then commit the manifests for instantiating the Cluster Classes. Fleet will detect the changes and trigger CAPI to initiate the deployment process, installing SL Micro and Kubernetes, demonstrating GitOps in action.
 
 8. **Day Two Operations:**
-    * **Part 1: Application Upgrade:** We'll upgrade an application within AZ1 using the Cluster Class, showcasing streamlined application lifecycle management.
-    * **Part 2: Kubernetes Upgrade:** We'll modify manifests for the instances in AZ2 to trigger a Kubernetes upgrade across all clusters within the AZ using CAPI and the management-as-code principles.
+    * **Part 1: OS Upgrade:** We'll upgrade the OS version just using cluster class within AZ1 (oneshot to be upgraded in all instances), showcasing streamlined lifecycle management.
+    * **Part 2: Kubernetes Upgrade:** We'll modify manifests for the instances in AZ2 to trigger a Kubernetes upgrade across the clusters within the AZ using CAPI and the management-as-code principles.
 
 ## Learn More
 
