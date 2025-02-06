@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: emea-spa-node-16-2
+  namespace: emea-spa
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: YWRtaW4=
+---
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: emea-spa-node-16-2
+  namespace: emea-spa
+  labels:
+    cluster-role: control-plane
+    deploy-region: emea-spa
+    az: az1
+spec:
+  online: true
+  bootMACAddress: "AA:78:B5:02:0D:31"
+  bmc:
+    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/823c16d5-2150-4c30-bb90-98412483cc3c
+    disableCertificateVerification: true
+    credentialsName: emea-spa-node-16-2
