@@ -14,27 +14,28 @@ This demo focuses on two key regions:
 
 ## Workflow
 
-While the management cluster deployment is outside the scope of this demo, it worth noting that was deployed as an appliance including SL Micro, RKE 2, Rancher, Turtles (CAPI), Metal3, SUSE Storage (Longhorn), and SUSE Security (NeuVector) using an Edge Image Builder-created ISO.
+While the management cluster deployment is outside the scope of this demo, it's worth noting that it was deployed as an appliance including SL Micro, RKE 2, Rancher, Turtles (CAPI), Metal3, SUSE Storage (Longhorn), and SUSE Security (NeuVector) using an Edge Image Builder-created ISO.
 
-In this demo we will run the following key steps:
+This demo covers the following key steps:
 
-1. **CAPI UI Extension Installation:**  We'll begin by installing the CAPI UI extension for simplified cluster management.
+1. **CAPI UI Extension Installation:** We'll begin by installing the CAPI UI extension for simplified cluster management.
 
-2. **Cluster Management Overview:**  We'll explore the cluster management interface, showcasing deployed clusters, Bare Metal Host (BMH) objects, and other relevant components.
+2. **Cluster Management Overview:** We'll explore the cluster management interface, showcasing deployed clusters, Bare Metal Host (BMH) objects, and other relevant components.
 
-3. **Git Repository Overview:**  We'll review the Git repository structure, branches, and components used for deployment, emphasizing the management-as-code approach.
+3. **Git Repository Overview:** We'll review the Git repository structure, branches, and components used for deployment, emphasizing the management-as-code approach.
 
 4. **EMEA-GER Region Deployment (Fleet):** We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
 
 5. **EMEA-GER Region Deployment Monitoring:** We'll monitor the deployment progress of the 200 emulated servers.
 
-6. **Benefits of using clusterClass:** We'll discuss the advantages of using Cluster Class manifests over standard manifests for simplified and consistent deployments.
+6. **Benefits of Cluster Classes:** We'll discuss the advantages of using Cluster Class manifests over standard manifests for simplified and consistent deployments.
 
 7. **EMEA-SPA Region Deployment (CAPI & GitOps):**
     * We'll create two distinct Cluster Classes for the two AZs in the EMEA-SPA region.
-    * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository. We will use diferent labels for the different cluster instances depending on the AZ they're located, these labels will be used by Fleet to know what to deploy and where.
-    * Initially, the branch will be empty. In the first commit we will send the BMH manifests, Fleet will deploy them to the management cluster triggering the process. Metal3 will invoque the Ironic Python Agent (IPA) that will connect to the BMCs in order to inspect the hardware and determine the availability.
-    * In a second commit we will push the manifests for instantiating the clusterClasses. Fleet will detect the changes, triggering CAPI to initiate the deployment process, installing the SL Micro and Kubernetes demonstrating GitOps in action.
+    * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository.  We'll use different labels for the cluster instances depending on their AZ, allowing Fleet to target deployments effectively.
+    * Initially, the branch will be empty.  
+        * **First Commit (BMH Manifests):** We'll commit the BMH manifests. Fleet will deploy them to the management cluster, triggering the process. Metal3 will invoke the Ironic Python Agent (IPA), which will connect to the BMCs to inspect the hardware and determine availability.
+        * **Second Commit (ClusterClass Manifests):** We'll then commit the manifests for instantiating the Cluster Classes. Fleet will detect the changes and trigger CAPI to initiate the deployment process, installing SL Micro and Kubernetes, demonstrating GitOps in action.
 
 8. **Day Two Operations:**
     * **Part 1: Application Upgrade:** We'll upgrade an application within AZ1 using the Cluster Class, showcasing streamlined application lifecycle management.
