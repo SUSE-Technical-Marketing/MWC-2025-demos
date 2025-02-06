@@ -24,13 +24,16 @@ This demo covers the following key steps:
 
 3. **Git Repository Overview:** We'll review the Git repository structure, branches, and components used for deployment, emphasizing the management-as-code approach.
 
-4. **EMEA-GER Region Deployment (Fleet):** We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
+4. **EMEA-GER Region Deployment (CAPI and Fleet):** 
+    * We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
+    * The manifests for these clusters will reside in the `emea-ger` branch of the demo repository.
+    * Initially, the branch will be empty. We will commit the BMH and CAPI files to start the enrollment and provisioning of the 200 emulated clusters.
 
 5. **EMEA-GER Region Deployment Monitoring:** We'll monitor the deployment progress of the 200 emulated servers.
 
 6. **Benefits of Cluster Classes:** We'll discuss the advantages of using Cluster Class manifests over standard manifests for simplified and consistent deployments.
 
-7. **EMEA-SPA Region Deployment (CAPI & GitOps):**
+7. **EMEA-SPA Region Deployment (CAPI, Cluster Class and Fleet):**
     * We'll create two distinct Cluster Classes for the two AZs in the EMEA-SPA region.
     * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository.  We'll use different labels for the cluster instances depending on their AZ, allowing Fleet to target deployments effectively.
     * Initially, the branch will be empty.  
