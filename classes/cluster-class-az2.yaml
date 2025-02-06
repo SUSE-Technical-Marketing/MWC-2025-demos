@@ -100,12 +100,12 @@ spec:
       required: true
       schema:
         openAPIV3Schema:
-            type: string
+          type: string
     - name: imageURL
       required: true
       schema:
         openAPIV3Schema:
-            type: string
+          type: string
   infrastructure:
     ref:
       kind: Metal3ClusterTemplate
