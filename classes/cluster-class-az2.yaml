@@ -100,13 +100,11 @@ spec:
       required: true
       schema:
         openAPIV3Schema:
-          items:
             type: string
     - name: imageURL
       required: true
       schema:
         openAPIV3Schema:
-          items:
             type: string
   infrastructure:
     ref:
