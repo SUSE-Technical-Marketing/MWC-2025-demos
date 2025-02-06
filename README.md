@@ -49,5 +49,3 @@ This demo covers the following key steps:
 For more information about SUSE Edge for Telco, please visit https://www.suse.com/products/edge-for-telco/ or https://suse-edge.github.io/atip-architecture.html to know more about SUSE Edge for Telco.
 
 ## Contributing
-
-[Optional: Add contribution guidelines here if applicable.]
