@@ -36,7 +36,7 @@ In this demo we will run the following key steps:
     * Initially, the branch will be empty. In the first commit we will send the BMH manifests, Fleet will deploy them to the management cluster triggering the process. Metal3 will invoque the Ironic Python Agent (IPA) that will connect to the BMCs in order to inspect the hardware and determine the availability.
     * In a second commit we will push the manifests for instantiating the clusterClasses. Fleet will detect the changes, triggering CAPI to initiate the deployment process, installing the SL Micro and Kubernetes demonstrating GitOps in action.
 
-10. **Day Two Operations:**
+8. **Day Two Operations:**
     * **Part 1: Application Upgrade:** We'll upgrade an application within AZ1 using the Cluster Class, showcasing streamlined application lifecycle management.
     * **Part 2: Kubernetes Upgrade:** We'll modify manifests for the instances in AZ2 to trigger a Kubernetes upgrade across all clusters within the AZ using CAPI and the management-as-code principles.
 
