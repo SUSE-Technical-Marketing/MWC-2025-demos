@@ -14,7 +14,9 @@ This demo focuses on two key regions:
 
 ## Workflow
 
-While the management cluster deployment is outside the scope of this demo (it was deployed as an appliance including SL Micro, RKE 2, Rancher, Turtles (CAPI), Metal3, SUSE Storage (Longhorn), and SUSE Security (NeuVector) using an Edge Image Builder-created ISO), we will cover the following key steps:
+While the management cluster deployment is outside the scope of this demo, it worth noting that was deployed as an appliance including SL Micro, RKE 2, Rancher, Turtles (CAPI), Metal3, SUSE Storage (Longhorn), and SUSE Security (NeuVector) using an Edge Image Builder-created ISO.
+
+In this demo we will run the following key steps:
 
 1. **CAPI UI Extension Installation:**  We'll begin by installing the CAPI UI extension for simplified cluster management.
 
@@ -22,7 +24,7 @@ While the management cluster deployment is outside the scope of this demo (it wa
 
 3. **Git Repository Overview:**  We'll review the Git repository structure, branches, and components used for deployment, emphasizing the management-as-code approach.
 
-4. **EMEA-GER Region Deployment (Fleet):** We'll deploy the 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
+4. **EMEA-GER Region Deployment (Fleet):** We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
 
 5. **EMEA-GER Region Deployment Monitoring:** We'll monitor the deployment progress of the 200 emulated servers.
 
@@ -30,12 +32,9 @@ While the management cluster deployment is outside the scope of this demo (it wa
 
 7. **EMEA-SPA Region Deployment (CAPI & GitOps):**
     * We'll create two distinct Cluster Classes for the two AZs in the EMEA-SPA region.
-    * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository.
-    * Initially, the branch will be empty.  Upon pushing the manifests, Fleet will detect the changes, triggering CAPI to initiate the deployment process, demonstrating GitOps in action.
-
-8. **BMH Manifest Creation:** We'll create and review the manifests for the AZ1 and AZ2 BMH objects, including necessary labels.
-
-9. **EMEA-SPA Deployment via GitOps:** We'll commit and push the manifests to the `emea-spa` branch, initiating the deployment of bare metal servers in both AZs.
+    * The manifests for these clusters will reside in the `emea-spa` branch of the demo repository. We will use diferent labels for the different cluster instances depending on the AZ they're located, these labels will be used by Fleet to know what to deploy and where.
+    * Initially, the branch will be empty. In the first commit we will send the BMH manifests, Fleet will deploy them to the management cluster triggering the process. Metal3 will invoque the Ironic Python Agent (IPA) that will connect to the BMCs in order to inspect the hardware and determine the availability.
+    * In a second commit we will push the manifests for instantiating the clusterClasses. Fleet will detect the changes, triggering CAPI to initiate the deployment process, installing the SL Micro and Kubernetes demonstrating GitOps in action.
 
 10. **Day Two Operations:**
     * **Part 1: Application Upgrade:** We'll upgrade an application within AZ1 using the Cluster Class, showcasing streamlined application lifecycle management.
