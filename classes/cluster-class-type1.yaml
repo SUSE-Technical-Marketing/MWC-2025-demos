@@ -79,6 +79,11 @@ metadata:
   namespace: emea-spa
 spec:
   variables:
+    - name: dataTemplate
+      required: true
+      schema:
+        openAPIV3Schema:
+          type: string
     - name: controlPlaneDataTemplate
       required: true
       schema:
@@ -122,6 +127,18 @@ spec:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         name: metal3-control-plane-template-type1
   patches:
+    - name: setDataTemplate
+      definitions:
+        - selector:
+            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+            kind: Metal3MachineTemplate
+            matchResources:
+              controlPlane: true
+          jsonPatches:
+            - op: replace
+              path: /spec/template/spec/dataTemplate/name
+              valueFrom:
+                variable: dataTemplate
     - name: setClusterName
       definitions:
         - selector:
