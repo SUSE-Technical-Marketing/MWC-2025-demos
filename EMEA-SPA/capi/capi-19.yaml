@@ -1,0 +1,39 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: emea-spa-cluster-19
+  namespace: emea-spa
+spec:
+  topology:
+    class: metal3-rke2-clusterclass-type2  # Correct way to reference ClusterClass
+    version: v1.31.3+rke2r1
+    controlPlane:
+      replicas: 1
+    variables:
+      - name: controlPlaneDataTemplate
+        value: emea-spa-cluster-19
+      - name: controlPlaneEndpointHost
+        value: 192.168.122.219
+      - name: tlsSan
+        value:
+          - 192.168.122.219
+          - https://192.168.122.219.sslip.io
+      - name: imageChecksumURL
+        value: http://192.168.122.1:8080/eibimage-downstream-cluster.raw.sha256
+      - name: imageURL
+        value: http://192.168.122.1:8080/eibimage-downstream-cluster.raw
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: Metal3DataTemplate
+metadata:
+  name: metal3-control-plane-data-template-type2
+  namespace: emea-spa
+spec:
+  clusterName: emea-spa-cluster-19
+  metaData:
+    objectNames:
+      - key: name
+        object: machine
+      - key: local-hostname
+        object: machine
+
