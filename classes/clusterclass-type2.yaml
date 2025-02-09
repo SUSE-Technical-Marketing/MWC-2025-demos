@@ -1,7 +1,7 @@
 apiVersion: controlplane.cluster.x-k8s.io/v1beta1
 kind: RKE2ControlPlaneTemplate
 metadata:
-  name: rke2-control-plane-template-type1
+  name: example-controlplane-type2
   namespace: emea-spa
 spec:
   template:
@@ -9,7 +9,7 @@ spec:
       infrastructureRef:
         apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
         kind: Metal3MachineTemplate
-        name: metal3-control-plane-template-type1
+        name: example-controlplane    # This will be replaced by the patch
         namespace: emea-spa
       replicas: 1
       version: v1.31.3+rke2r1
@@ -35,33 +35,9 @@ spec:
         nodeName: "localhost.localdomain"
 ---
 apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-kind: Metal3MachineTemplate
-metadata:
-  name: metal3-control-plane-template-type1
-  namespace: emea-spa
-spec:
-  nodeReuse: True
-  template:
-    spec:
-      automatedCleaningMode: metadata
-      dataTemplate:
-        name: metal3-control-plane-data-template-type1
-      hostSelector:
-        matchLabels:
-          cluster-role: control-plane
-          deploy-region: emea-spa
-          cluster-type: type1
-      image:
-        checksum: http://192.168.122.1:8080/eibimage-downstream-cluster.raw.sha256
-        checksumType: sha256
-        format: raw
-        url: http://192.168.122.1:8080/eibimage-downstream-cluster.raw
-
----
-apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
 kind: Metal3ClusterTemplate
 metadata:
-  name: metal3-cluster-template-type1
+  name: example-cluster-template-type2
   namespace: emea-spa
 spec:
   template:
@@ -70,21 +46,15 @@ spec:
         host: "default"  # This will be replaced by the patch
         port: 6443
       noCloudProvider: true
-
 ---
 apiVersion: cluster.x-k8s.io/v1beta1
 kind: ClusterClass
 metadata:
-  name: metal3-rke2-clusterclass-type1
+  name: example-clusterclass-type2
   namespace: emea-spa
 spec:
   variables:
-    - name: dataTemplate
-      required: true
-      schema:
-        openAPIV3Schema:
-          type: string
-    - name: controlPlaneDataTemplate
+    - name: controlPlaneMachineTemplate
       required: true
       schema:
         openAPIV3Schema:
@@ -101,80 +71,29 @@ spec:
           type: array
           items:
             type: string
-    - name: imageChecksumURL
-      required: true
-      schema:
-        openAPIV3Schema:
-          type: string
-    - name: imageURL
-      required: true
-      schema:
-        openAPIV3Schema:
-          type: string
   infrastructure:
     ref:
       kind: Metal3ClusterTemplate
       apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-      name: metal3-cluster-template-type1
+      name: example-cluster-template-type2
   controlPlane:
     ref:
       kind: RKE2ControlPlaneTemplate
       apiVersion: controlplane.cluster.x-k8s.io/v1beta1
-      name: rke2-control-plane-template-type1
-    machineInfrastructure:
-      ref:
-        kind: Metal3MachineTemplate
-        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-        name: metal3-control-plane-template-type1
+      name: example-controlplane-type2
   patches:
-    - name: setDataTemplate
+    - name: setControlPlaneMachineTemplate
       definitions:
         - selector:
-            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-            kind: Metal3MachineTemplate
+            apiVersion: controlplane.cluster.x-k8s.io/v1beta1
+            kind: RKE2ControlPlaneTemplate
             matchResources:
               controlPlane: true
           jsonPatches:
             - op: replace
-              path: /spec/template/spec/dataTemplate/name
+              path: "/spec/template/spec/infrastructureRef/name"
               valueFrom:
-                variable: dataTemplate
-    - name: setClusterName
-      definitions:
-        - selector:
-            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-            kind: Metal3MachineTemplate
-            matchResources:
-              controlPlane: true
-          jsonPatches:
-            - op: replace
-              path: /spec/template/spec/dataTemplate/name
-              valueFrom:
-                variable: controlPlaneDataTemplate
-    - name: setImageChecksumURL
-      definitions:
-        - selector:
-            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-            kind: Metal3MachineTemplate
-            matchResources:
-              controlPlane: true
-          jsonPatches:
-            - op: replace
-              path: /spec/template/spec/image/checksum
-              valueFrom:
-                variable: imageChecksumURL
-    - name: setImageURL
-      definitions:
-        - selector:
-            apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
-            kind: Metal3MachineTemplate
-            matchResources:
-              controlPlane: true
-          jsonPatches:
-            - op: replace
-              path: /spec/template/spec/image/url
-              valueFrom:
-                variable: imageURL
+                variable: controlPlaneMachineTemplate
     - name: setControlPlaneEndpoint
       definitions:
         - selector:
@@ -223,7 +142,7 @@ spec:
               path: "/spec/template/spec/agentConfig/additionalUserData"
               valueFrom:
                 template: |
-                  config: | 
+                  config: |
                     variant: fcos
                     version: 1.4.0
                     storage:
