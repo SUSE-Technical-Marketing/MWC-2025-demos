@@ -12,7 +12,7 @@ spec:
         name: example-controlplane    # This will be replaced by the patch
         namespace: emea-spa
       replicas: 1
-      version: v1.31.3+rke2r1
+      version: v1.31.4+rke2r1
       rolloutStrategy:
         type: "RollingUpdate"
         rollingUpdate:
