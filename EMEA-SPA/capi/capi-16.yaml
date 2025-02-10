@@ -1,0 +1,57 @@
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: emea-spa-cluster-16
+  namespace: emea-spa
+spec:
+  topology:
+    class: example-clusterclass-type1  # Correct way to reference ClusterClass
+    version: v1.31.3+rke2r1
+    controlPlane:
+      replicas: 1
+    variables:
+      - name: controlPlaneMachineTemplate
+        value: emea-spa-cluster-16-machinetemplate
+      - name: controlPlaneEndpointHost
+        value: 192.168.122.216
+      - name: tlsSan
+        value:
+          - 192.168.122.216
+          - https://192.168.122.216.sslip.io
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: Metal3MachineTemplate
+metadata:
+  name: emea-spa-cluster-16-machinetemplate
+  namespace: emea-spa
+spec:
+  nodeReuse: True
+  template:
+    spec:
+      automatedCleaningMode: metadata
+      dataTemplate:
+        name: emea-spa-cluster-16
+      hostSelector:
+        matchLabels:
+          cluster-role: control-plane
+          deploy-region: emea-spa
+          cluster-type: type1
+      image:
+        checksum: http://192.168.122.1:8080/eibimage-downstream-cluster.raw.sha256
+        checksumType: sha256
+        format: raw
+        url: http://192.168.122.1:8080/eibimage-downstream-cluster.raw
+---
+apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+kind: Metal3DataTemplate
+metadata:
+  name: emea-spa-cluster-16
+  namespace: emea-spa
+spec:
+  clusterName: emea-spa-cluster-16
+  metaData:
+    objectNames:
+      - key: name
+        object: machine
+      - key: local-hostname
+        object: machine
