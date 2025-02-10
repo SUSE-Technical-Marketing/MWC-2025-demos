@@ -6,7 +6,7 @@ metadata:
 spec:
   topology:
     class: example-clusterclass-type2  # Correct way to reference ClusterClass
-    version: v1.31.3+rke2r1
+    version: v1.31.4+rke2r1
     controlPlane:
       replicas: 1
     variables:
