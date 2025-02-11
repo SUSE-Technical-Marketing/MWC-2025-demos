@@ -33,9 +33,8 @@ This demo covers the following key steps:
         * **First Commit (BMH Manifests):** We'll commit the BMH manifests. Fleet will deploy them to the management cluster, triggering the process. Metal3 will invoke the Ironic Python Agent (IPA), which will connect to the BMCs to inspect the hardware and determine availability.
         * **Second Commit (ClusterClass Manifests):** We'll then commit the manifests for instantiating the Cluster Classes. Fleet will detect the changes and trigger CAPI to initiate the deployment process, installing SL Micro and Kubernetes, demonstrating GitOps in action.
 
-6. **Day Two Operations:**
-    * **Part 1: APP Upgrade:** We want to showcase how to upgrade an app using ClusterClass. In this case we will upgrade MetalLB since it is part of the infra and it is already running in the clusters. By changing the version on the ClusterClass we will upgrade MetalLB in all the clusters of type 1.
-    * **Part 2: Kubernetes Upgrade:** We'll modify the instance manifests for all the the type 2 clusters to trigger a Kubernetes upgrade across the type 2 clusters using CAPI and the management-as-code principles.
+6. **EMEA-SPA cluster auto-import:** 
+    * Labeling the `emea-spa` namespace with the label: `cluster-api.cattle.io/rancher-auto-import=true` so Rancher automatically detects, imports and start managing all the clusters deployed in the namespace.
 
 7. **EMEA-GER Region Deployment (CAPI and Fleet):** 
     * We'll deploy 200 emulated clusters in the EMEA-GER region using Fleet, demonstrating large-scale deployment capabilities.
@@ -44,6 +43,9 @@ This demo covers the following key steps:
 
 8. **EMEA-GER Region Deployment Monitoring:** We'll monitor the deployment progress of the 200 emulated servers.
 
+6. **Day Two Operations:**
+    * **Part 1: Kubernetes Upgrade:** We'll modify the instance manifests for all the the type 2 clusters to trigger a Kubernetes upgrade across the type 2 clusters using CAPI and the management-as-code principles.
+    * **Part 2: APP Upgrade:** We want to showcase how to upgrade an app using ClusterClass. In this case we will upgrade MetalLB since it is part of the infra and it is already running in the clusters. By changing the version on the ClusterClass we will upgrade MetalLB in all the clusters of type 1.
 
 ## Learn More
 
