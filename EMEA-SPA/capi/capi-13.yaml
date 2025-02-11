@@ -8,7 +8,7 @@ spec:
     class: example-clusterclass-type2  # Correct way to reference ClusterClass
     version: v1.31.3+rke2r1
     controlPlane:
-      replicas: 1
+      replicas: 3
     variables:
       - name: controlPlaneMachineTemplate
         value: emea-spa-cluster-13-machinetemplate
