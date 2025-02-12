@@ -19,8 +19,8 @@ metadata:
     cluster-type: type1
 spec:
   online: true
-  bootMACAddress: "AA:C8:F6:64:0F:CC"
+  bootMACAddress: "AA:D5:16:E5:57:45"
   bmc:
-    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/3af34190-bf98-4cd1-9853-17ff32c7c2b5
+    address: redfish-virtualmedia+http://192.168.122.1:8000/redfish/v1/Systems/1fb597d9-2edb-43d4-9349-fd8d74c4d636
     disableCertificateVerification: true
     credentialsName: emea-spa-node-20-2
