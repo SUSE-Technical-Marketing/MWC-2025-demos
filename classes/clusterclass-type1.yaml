@@ -145,6 +145,26 @@ spec:
                   config: |
                     variant: fcos
                     version: 1.4.0
+                    kernel_arguments:
+                      should_exist:
+                        - intel_iommu=on
+                        - iommu=pt
+                        - idle=poll
+                        - mce=off
+                        - hugepagesz=1G hugepages=40
+                        - hugepagesz=2M hugepages=0
+                        - default_hugepagesz=1G
+                        - irqaffinity=0-3
+                        - isolcpus=domain,nohz,managed_irq,4-39
+                        - nohz_full=4-39
+                        - rcu_nocbs=4-39
+                        - rcu_nocb_poll
+                        - nosoftlockup
+                        - nowatchdog
+                        - nohz=on
+                        - nmi_watchdog=0
+                        - skew_tick=1
+                        - quiet
                     storage:
                       files:
                         - path: /var/lib/rancher/rke2/server/manifests/endpoint-copier-operator.yaml
