@@ -48,10 +48,8 @@ This demo covers the following key steps:
 
 8. **Day Two Operations:**
     * **Part 1: CAPI Cluster Upgrade:** We'll modify the instance manifests for all the the type 2 clusters to trigger a Kubernetes upgrade across the type 2 clusters using CAPI and the management-as-code principles.
-    * **Part 2: Cluster upgrade with ClusterClass :** We want to showcase how to upgrade an app using ClusterClass. In this case we will upgrade single-node and HA clusters using ClusterClass.
-6. **Day Two Operations:**
-    * **Part 1: Kubernetes Upgrade:** We'll modify the instance manifests for all the the type 2 clusters to trigger a Kubernetes upgrade across the type 2 clusters using CAPI and the management-as-code principles.
-    * **Part 2: Kernel args modifications:** We want to showcase how to modify the kernel args for a Telco app using ClusterClass. In this case we will modify some kernel args to enable some Telco capabilities since it is part of the infra and it is already running in the clusters. By changing the kernel args values on the ClusterClass we will modify the values in all the clusters of type 1.
+    * **Part 2: Cluster upgrade with ClusterClass:** We want to showcase how to upgrade an app using ClusterClass. In this case we will upgrade single-node and HA clusters using ClusterClass.
+    * **Part 3: Kernel args modifications:** We want to showcase how to modify the kernel args for a Telco app using ClusterClass. In this case we will modify some kernel args to enable some Telco capabilities since it is part of the infra and it is already running in the clusters. By changing the kernel args values on the ClusterClass we will modify the values in all the clusters of type 1.
 
 ## Learn More
 
